@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+      <!-- ----------- Bootstrap css file ------------- -->
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+
+      <!-- ----------- Custom css file ------------- -->
+    <link rel="stylesheet" href="css/Curd.css">
+
+</head>
+
+<body class="bg-light">
+    
+        <div class="container py-4 text-secondary bg-light">
+
+            <!-- ------------ Section Header ,  Inputs -----------  -->
+            <section class="shadow rounded text-center py-2 pb-4">
+
+                <!-- -------------- Header -------------- -->
+                <h1 class="mt-2"> 
+                    <p class=" badge  bg-primary">
+                        GRUD SYSTEM 
+                    </p>
+                </h1>
+
+                <!-- ------------ Group of Inputs  -----------  -->
+                <div class="curd bg-light w-50 m-auto d-grid">
+
+                    <div class="vstack justify-content-center">
+
+                        <!-- ---------  product Require --------- -->
+                        <div class="data position-relative mt-3 mb-2">
+
+                            <p class="mb-0"> Product Name <span class="text-danger" > * </span> </p>
+
+                        </div>
+
+                        <!-- ---------  Input Name --------- -->
+                        <div class="data position-relative">
+
+                            <input
+                                type="text"
+                                id="productInputName"
+                                class="form-control "
+                                placeholder=" "
+                            />
+                            <label for="productInputName">Product Name</label>
+    
+                        </div>
+
+                        <!-- ---------  product Require --------- -->
+                        <div class="data position-relative mt-3 mb-2">
+
+                            <p class="mb-0"> Product Price <span class="text-danger" > * </span> </p>
+    
+                        </div>
+
+                        <!-- ------ Group of input Number (price, ads, taxes, total) ------ -->
+                        <div class="price row ">
+    
+                            <div class="data position-relative col-sm-12 col-md-6 col-lg-3 mt-3 ">
+    
+                                <input onkeyup="getTotal()" type="number" id="productInputPrice" class="form-control" placeholder=" ">
+    
+                                <label for="productInputPrice">Product Price</label>
+                
+                            </div>
+    
+                            <div class="data position-relative col-sm-12 col-md-6 col-lg-3 mt-3">
+    
+                                <input onkeyup="getTotal()" type="number" id="productInputTaxes" class="form-control" placeholder=" ">
+                                
+                                <label for="productInputTaxes"> Taxes </label>
+                
+                            </div>
+    
+                            <div class="data position-relative col-sm-12 col-md-6 col-lg-3 mt-3">
+    
+                                <input onkeyup="getTotal()" type="number" id="productInputPrAds" class="form-control" placeholder=" ">
+    
+                                <label for="productInputPrAds"> Discount </label>
+                
+                            </div>
+    
+                            <div class="data position-relative col-sm-12 col-md-6 col-lg-3 mt-3"> 
+    
+                                <div class="data position-relative ">
+    
+                                    <div class="form-contrl text-light" style="background-color: #dc3545;;" id="totalInput" >
+                                         Total : <span id="total-span">  </span>
+                                    </div>
+
+                                </div>
+                
+                            </div>
+    
+                        </div>
+                        <!-- ---------  product Require --------- -->
+                        <div class="data position-relative mt-3 mb-2" id="count-product">
+
+                            <p class="mb-0"> Product Count <span class="text-danger" > * </span> </p>
+
+                        </div>
+
+                        <!-- ---------  Input Count --------- -->
+                        <div class="data position-relative" id="Count-star">
+    
+                            <input type="number" id="productInputCount" class="form-control" placeholder=" ">
+    
+                            <label for="productInputCount"> Count </label>
+    
+                        </div>
+
+                        <!-- ---------  product Require --------- -->
+                        <div class="data position-relative mt-3 mb-2">
+
+                            <p class="mb-0"> Product Category <span class="text-danger" > * </span> </p>
+
+                        </div>
+
+                        <!-- ---------  Input Category --------- -->
+                        <div class="data position-relative">
+    
+                            <input type="text" id="productInputCategory" class="form-control" placeholder=" ">
+    
+                            <label for="productInputName">Category</label>
+    
+                        </div>
+ 
+                        <!-- ---------  product Require --------- -->
+                        <div class="data position-relative mt-3 mb-2">
+
+                            <p class="mb-0"> Product Disc <span class="text-danger"> * </span> </p>
+
+                        </div>
+
+                        <!-- ---------  text area --------- -->
+                        <div class="data position-relative">
+                            <textarea
+                               id="productInputDes"
+                               class="form-control "
+                               placeholder=" "
+                               rows="3"
+                            ></textarea>
+                            <label for="productInputDes">Product Description</label>
+                            
+                         </div>
+
+                    </div>
+
+                </div>
+
+                <!-- ---------- Group of Buttons  -->
+                <div class="btn-box w-50 m-auto">
+
+                    <div class="btn-group d-flex flex-wrap w-75 m-auto gap-4 mt-4 mb-2">
+
+                        <!-- ------------ Button Add Product -----------  -->
+                        <button 
+                            id="addProduct"
+                            type="button"
+                            class="btn btn-primary  btn-sm rounded py-2 fs-6"
+                        >
+                            Add Product
+                        </button>
+
+                        <!-- ------------ Button Clear Product -----------  -->        
+                        <button 
+                            id="clearForm" 
+                            type="button" 
+                            class="btn btn-primary   btn-sm rounded px-4 py-2 fs-6"
+                        >
+                            Clear
+                        </button>               
+        
+                    </div>
+
+                </div>
+
+            </section>
+
+             <!-- ------------ Input Search -----------  -->
+            <div class="data position-relative">
+
+                <input
+                    type="search"
+                    id="productSearch"
+                    class="form-control form-control-sm  mt-5 mx-auto w-50 p-2 "
+                    placeholder=" "
+                    onkeyup = 'searchData(this.value)'
+                />
+                <label for="productSearch"> Product Search By Name ... </label>
+
+            </div>
+            
+            <!-- ------------ Section Delete Icon -----------  -->
+            <section class=" d-flex flex-wrap gap-3 align-items-center mt-5" >
+
+                <lord-icon 
+                    id="delete-icon"
+                    src="https://cdn.lordicon.com/qjwkduhc.json"
+                    trigger="hover"
+                    style="width:60px; height:60px; cursor:pointer;">
+
+                </lord-icon>
+
+        
+                    <div class="data position-relative mt-3">
+
+                        <div class="form-contrl p-2 " id="delete-all">
+                            Total : <span class="total-delete-span"></span>
+                        </div>
+                    </div>
+
+            </section>
+
+            <!-- ------------ Section Table -----------  -->
+            <section class="table mt-4">
+
+                <table class="table">
+
+                    <thead>
+
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col"> Name</th>
+                            <th scope="col"> Price </th>
+                            <th scope="col"> Category </th>
+                            <th scope="col"> Description </th>
+                            <th scope="col" class=" px-3"> Delete </th>
+                            <th scope="col" class=" px-3"> Update </th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="tbody">
+                     
+                    </tbody>
+
+                </table>
+
+            </section>
+            
+        </div>
+
+
+        <!-- ---------------- animation icon ------------------ -->
+        <script src="https://cdn.lordicon.com/pzdvqjsp.js"></script>
+
+        <!-- ----------- Bootstrap file ------------ -->
+        <script src="js/bootstrap.bundle.min.js"></script>
+
+        <!-- ----------- Main file ------------ -->
+        <script src="js/Crud.js"></script>
+
+</body>
+</html>
